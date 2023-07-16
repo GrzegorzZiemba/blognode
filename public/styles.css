@@ -14,8 +14,9 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #fbbe5b;
+  background-color: #f1c84a;
   padding: 10px 50px;
+  font-weight: bold;
 }
 
 .nav-list {
@@ -39,13 +40,13 @@ body {
 }
 
 .nav-link:hover {
-  background-color: #fcd670;
-  color: #202020;
+  background-color: #202020;
+  color: #fff;
 }
 
 .header,
 .footer {
-  background-color: #fbbe5b;
+  background-color: #f1c84a;
   padding: 20px 0;
   color: #202020;
 }
@@ -98,15 +99,15 @@ body {
 }
 
 .btn-primary {
-  background-color: #fbbe5b;
+  background-color: #f1c84a;
   border: none;
   color: #202020;
   transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #fcd670;
-  color: #202020;
+  background-color: #202020;
+  color: #fff;
 }
 
 .copyright {
@@ -137,7 +138,7 @@ body {
 }
 
 .footer {
-  background-color: #fbbe5b;
+  background-color: #f1c84a;
   padding: 20px 0;
   color: #202020;
   text-align: center;
