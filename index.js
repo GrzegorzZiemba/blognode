@@ -4,8 +4,10 @@ const path = require("path");
 const db = require("./db/mongodb");
 const Post = require("./db/models/postModel");
 const User = require("./db/models/userModel");
+const csrf = require("csurf");
 
 const app = express();
+var csrfProtection = csrf({ cookie: true });
 
 db();
 
@@ -14,6 +16,7 @@ app.set("views", "views");
 
 app.use(express.static(path.join(__dirname, "public")));
 app.use(express.json());
+app.use(csrfProtection);
 
 app.get("/", (req, res) => {
   res.render("main");
@@ -21,6 +24,14 @@ app.get("/", (req, res) => {
 
 app.get("/subpage", (req, res) => {
   res.render("subpage");
+});
+
+app.get("/log", (req, res) => {
+  res.render("login", { csrfToken: req.csrfToken() });
+});
+
+app.get("/signup", (req, res) => {
+  res.render("signup", { csrfToken: req.csrfToken() });
 });
 
 app.post("/create-post", async (req, res) => {
@@ -34,6 +45,7 @@ app.post("/create-post", async (req, res) => {
 });
 
 app.post("/create-account", async (req, res) => {
+  console.log(req.body);
   try {
     const user = req.body;
     const userExists = await User.find({ email: user.email });
@@ -53,6 +65,7 @@ app.post("/create-account", async (req, res) => {
 });
 
 app.post("/login", async (req, res) => {
+  console.log(req.body);
   try {
     console.log(req.body.email);
     const user = await User.loginUser(req.body.email, req.body.password);

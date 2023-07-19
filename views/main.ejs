@@ -1,26 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>My Blog</title>
-    <link
-      rel="stylesheet"
-      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-    />
-    <link rel="stylesheet" type="text/css" href="styles.css" />
-  </head>
-  <body class="body">
-    <nav class="navigation">
-      <ul class="nav-list">
-        <li class="nav-item"><a href="/" class="nav-link">Home</a></li>
-        <li class="nav-item"><a href="/subpage" class="nav-link">Subpage</a></li>
-    </ul>
-    <ul class="nav-list">
-        <li class="nav-item"><a href="#" class="nav-link">Login</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Signup</a></li>
-        <li class="nav-item"><a href="#" class="nav-link">Logout</a></li>
-    </ul>
-</nav>
-    </nav>
+<%- include('./includes/header.ejs') %>
+    <%- include('./includes/navbar.ejs') %>
+
     <header class="header">
       <h1 class="title"><img src="/Przechwytywanie.png" /></h1>
     </header>
@@ -40,8 +20,6 @@
         </div>
       </div>
     </section>
-    <footer class="footer">
-      <p class="copyright">&copy; 2023 My Blog</p>
-    </footer>
+    <%- include('./includes/footer.ejs') %>
   </body>
 </html>
