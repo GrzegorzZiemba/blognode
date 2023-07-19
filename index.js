@@ -1,5 +1,7 @@
 const express = require("express");
 const path = require("path");
+const bodyParser = require("body-parser");
+var cookieParser = require("cookie-parser");
 
 const db = require("./db/mongodb");
 const Post = require("./db/models/postModel");
@@ -7,17 +9,22 @@ const User = require("./db/models/userModel");
 const csrf = require("csurf");
 
 const app = express();
-var csrfProtection = csrf({ cookie: true });
+const csrfProtection = csrf({ cookie: true });
 
 db();
 
 app.set("view engine", "ejs");
 app.set("views", "views");
 
-app.use(express.static(path.join(__dirname, "public")));
-app.use(express.json());
-app.use(csrfProtection);
+app.use(cookieParser());
 
+app.use(express.static(path.join(__dirname, "public")));
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(csrfProtection);
+app.use((req, res, next) => {
+  res.locals.csrfToken = req.csrfToken();
+  next();
+});
 app.get("/", (req, res) => {
   res.render("main");
 });
@@ -27,11 +34,11 @@ app.get("/subpage", (req, res) => {
 });
 
 app.get("/log", (req, res) => {
-  res.render("login", { csrfToken: req.csrfToken() });
+  res.render("login");
 });
 
 app.get("/signup", (req, res) => {
-  res.render("signup", { csrfToken: req.csrfToken() });
+  res.render("signup");
 });
 
 app.post("/create-post", async (req, res) => {
