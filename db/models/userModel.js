@@ -21,7 +21,7 @@ const userSchema = new Schema({
     },
   },
   password: { type: String, required: true, minlength: 9, trim: true },
-  token: { type: String },
+  tokens: { type: String },
 });
 
 userSchema.pre("save", async function (next) {
@@ -36,6 +36,7 @@ userSchema.methods.generateAuthTokens = async function () {
   const token = jwt.sign({ _id: user._id.toString() }, process.env.SECRET_JWT);
   user.tokens = token;
   await user.save();
+  console.log(token);
   return token;
 };
 
@@ -49,6 +50,7 @@ userSchema.statics.loginUser = async (email, pass) => {
   if (!checkPassword) {
     throw new Error("Wrong Password or username");
   }
+
   return user;
 };
 
