@@ -37,26 +37,51 @@ app.get("/subpage", authenticateToken, (req, res) => {
   if (req.user) {
     res.render("subpage");
   } else {
-    res.redirect("/log");
+    res.redirect("/login");
   }
 });
 
-app.get("/log", (req, res) => {
+app.get("/login", (req, res) => {
   res.render("login");
 });
 
-app.get("/signup", (req, res) => {
+app.get("/create-account", (req, res) => {
   res.render("signup");
 });
 
+app.get("/create-post", authenticateToken, async (req, res) => {
+  if (req.user) {
+    const currentUser = await User.findById({ _id: req.user });
+    console.log(currentUser);
+    res.render("createPost", {
+      user: currentUser.name,
+      id: currentUser._id,
+    });
+  } else {
+    res.redirect("/");
+  }
+});
+
 app.post("/create-post", async (req, res) => {
-  const post = req.body;
-  console.log(post);
-  const addPost = new Post({
-    ...post,
-  });
-  await addPost.save();
-  res.send(200);
+  try {
+    const date = new Date();
+    const post = req.body;
+    console.log(post.author);
+    console.log(post.description);
+    console.log(post.title);
+    console.log(date);
+    const addPost = new Post({
+      // title: post.title,
+      // description: post.description,
+      // author: post.author,
+      ...post,
+      date,
+    });
+    await addPost.save();
+    res.send(200);
+  } catch (e) {
+    res.send(400);
+  }
 });
 
 app.post("/create-account", async (req, res) => {
