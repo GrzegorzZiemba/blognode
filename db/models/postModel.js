@@ -5,7 +5,7 @@ const post = new Schema({
   title: { type: String },
   description: { type: String },
   date: { type: Date },
-  author: { type: mongoose.Types.ObjectId, ref: "user" },
+  author: { type: String },
 });
 
 const Post = mongoose.model("Post", post);

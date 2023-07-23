@@ -40,15 +40,34 @@ router.post("/create-post", async (req, res) => {
   }
 });
 
-router.get("/getposts", async (req, res) => {
+router.get("/", isAuth.authenticateToken, async (req, res) => {
   try {
+    let current = "";
+    if (req.user) {
+      const currentUser = await User.findById({ _id: req.user });
+      current = currentUser._id;
+    }
+    console.log(current + "-----");
+
     const posts = await Post.find();
     console.log(posts);
     res.render("showPosts", {
       posts,
+      user: current,
     });
   } catch (e) {
     console.log("somethinggowrong");
+  }
+});
+
+router.post("/post-delete", async (req, res) => {
+  try {
+    const result = await Post.findByIdAndDelete(req.body.postId);
+    console.log("Deleted course: ", result);
+    console.log("DEleted");
+    res.redirect("/");
+  } catch (e) {
+    console.log("err");
   }
 });
 

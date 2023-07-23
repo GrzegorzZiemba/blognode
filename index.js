@@ -31,9 +31,9 @@ app.use((req, res, next) => {
 app.use(postRoutes);
 app.use(userRoutes);
 
-app.get("/", (req, res) => {
-  res.render("main");
-});
+// app.get("/", (req, res) => {
+//   res.render("main");
+// });
 
 app.get("/subpage", isAuth.authenticateToken, (req, res) => {
   console.log(req.user);
