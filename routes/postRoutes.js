@@ -39,4 +39,17 @@ router.post("/create-post", async (req, res) => {
     res.send(400);
   }
 });
+
+router.get("/getposts", async (req, res) => {
+  try {
+    const posts = await Post.find();
+    console.log(posts);
+    res.render("showPosts", {
+      posts,
+    });
+  } catch (e) {
+    console.log("somethinggowrong");
+  }
+});
+
 module.exports = router;
