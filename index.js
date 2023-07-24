@@ -24,7 +24,8 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(csrfProtection);
-app.use((req, res, next) => {
+app.use(isAuth.authenticateToken, (req, res, next) => {
+  res.locals.isAuth = req.user;
   res.locals.csrfToken = req.csrfToken();
   next();
 });
