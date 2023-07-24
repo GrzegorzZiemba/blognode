@@ -19,9 +19,11 @@
                     <p class="card-text">
                         <%= post._id %>
                     </p>
+                    <p class="card-text">
+                        <%= isAuth %>
+                    </p>
                     <p><%= post.author %></p>
-                    <p><%= user %></p>
-                    <% if (post.author == user) { %>
+                    <% if (post.author == isAuth) { %>
                         <p>Action</p>
                         <form action="/post-delete" method="POST" class="login-form">
                             <input type="hidden" value="<%= post._id %>" name="postId">
@@ -43,7 +45,7 @@
                         <h1>No Posts</h1>
                     <% } %>  
 
-                    <a href="subpage.html" class="btn btn-primary"><%= post.date %>}</a>
+                    <a href="/post/<%= post._id %>" class="btn btn-primary"><%= post.date %>}</a>
 
                     </div>
                 </div>

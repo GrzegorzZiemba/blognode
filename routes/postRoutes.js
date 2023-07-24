@@ -40,20 +40,16 @@ router.post("/create-post", async (req, res) => {
   }
 });
 
-router.get("/", isAuth.authenticateToken, async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     let current = "";
-    if (req.user) {
-      const currentUser = await User.findById({ _id: req.user });
-      current = currentUser._id;
-    }
+
     console.log(current + "-----");
 
     const posts = await Post.find();
     console.log(posts);
     res.render("showPosts", {
       posts,
-      user: current,
     });
   } catch (e) {
     console.log("somethinggowrong");
@@ -67,8 +63,24 @@ router.post("/post-delete", async (req, res) => {
     console.log("DEleted");
     res.redirect("/");
   } catch (e) {
-    console.log("err");
+    console.log("error");
   }
+});
+
+router.get("/post/:postId", async (req, res) => {
+  const postId = req.params.postId;
+  console.log(postId);
+  await Post.findById(postId)
+    .then((post) => {
+      res.render("post-detail", {
+        post: post,
+        pageTitle: post.title,
+        path: "/post",
+      });
+    })
+    .catch((err) => {
+      console.log(err);
+    });
 });
 
 module.exports = router;
