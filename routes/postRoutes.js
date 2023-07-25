@@ -78,9 +78,25 @@ router.get("/post/:postId", async (req, res) => {
         path: "/post",
       });
     })
+
     .catch((err) => {
       console.log(err);
     });
+});
+
+router.post("/post-update", async (req, res) => {
+  try {
+    console.log(req.body.postId);
+    const post = await Post.findById(req.body.postId);
+    console.log(post);
+    await post.updateOne({
+      title: req.body.title || post.title,
+      description: req.body.description || post.description,
+    });
+    res.redirect("/");
+  } catch (e) {
+    console.log(e);
+  }
 });
 
 module.exports = router;
