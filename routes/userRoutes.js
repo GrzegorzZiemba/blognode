@@ -11,7 +11,6 @@ router.get("/create-account", (req, res) => {
 });
 
 router.post("/create-account", async (req, res) => {
-  console.log(req.body);
   try {
     const user = req.body;
     const userExists = await User.find({ email: user.email });

@@ -8,7 +8,6 @@ const router = express.Router();
 router.get("/create-post", isAuth.authenticateToken, async (req, res) => {
   if (req.user) {
     const currentUser = await User.findById({ _id: req.user });
-    console.log(currentUser);
     res.render("createPost", {
       user: currentUser.name,
       id: currentUser._id,
@@ -22,10 +21,6 @@ router.post("/create-post", async (req, res) => {
   try {
     const date = new Date();
     const post = req.body;
-    console.log(post.author);
-    console.log(post.description);
-    console.log(post.title);
-    console.log(date);
     const addPost = new Post({
       // title: post.title,
       // description: post.description,
@@ -43,33 +38,26 @@ router.post("/create-post", async (req, res) => {
 router.get("/", async (req, res) => {
   try {
     let current = "";
-
-    console.log(current + "-----");
-
     const posts = await Post.find();
-    console.log(posts);
     res.render("showPosts", {
       posts,
     });
   } catch (e) {
-    console.log("somethinggowrong");
+    throw new Error(e);
   }
 });
 
 router.post("/post-delete", async (req, res) => {
   try {
     const result = await Post.findByIdAndDelete(req.body.postId);
-    console.log("Deleted course: ", result);
-    console.log("DEleted");
     res.redirect("/");
   } catch (e) {
-    console.log("error");
+    throw new Error(e);
   }
 });
 
 router.get("/post/:postId", async (req, res) => {
   const postId = req.params.postId;
-  console.log(postId);
   await Post.findById(postId)
     .then((post) => {
       res.render("post-detail", {
@@ -79,23 +67,21 @@ router.get("/post/:postId", async (req, res) => {
       });
     })
 
-    .catch((err) => {
-      console.log(err);
+    .catch((e) => {
+      throw new Error(e);
     });
 });
 
 router.post("/post-update", async (req, res) => {
   try {
-    console.log(req.body.postId);
     const post = await Post.findById(req.body.postId);
-    console.log(post);
     await post.updateOne({
       title: req.body.title || post.title,
       description: req.body.description || post.description,
     });
     res.redirect("/");
   } catch (e) {
-    console.log(e);
+    throw new Error(e);
   }
 });
 

@@ -32,12 +32,7 @@ app.use(isAuth.authenticateToken, (req, res, next) => {
 app.use(postRoutes);
 app.use(userRoutes);
 
-// app.get("/", (req, res) => {
-//   res.render("main");
-// });
-
 app.get("/subpage", isAuth.authenticateToken, (req, res) => {
-  console.log(req.user);
   if (req.user) {
     res.render("subpage");
   } else {
@@ -46,5 +41,5 @@ app.get("/subpage", isAuth.authenticateToken, (req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log("Whateveer");
+  console.log("Server is running");
 });

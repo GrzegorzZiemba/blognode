@@ -36,13 +36,11 @@ userSchema.methods.generateAuthTokens = async function () {
   const token = jwt.sign({ _id: user._id.toString() }, process.env.SECRET_JWT);
   user.tokens = token;
   await user.save();
-  console.log(token);
   return token;
 };
 
 userSchema.statics.loginUser = async (email, pass) => {
   const user = await User.findOne({ email });
-  console.log(user);
   if (!user) {
     throw new Error("Wrong Password or username");
   }
