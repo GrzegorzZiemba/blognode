@@ -32,7 +32,6 @@ router.post("/create-account", async (req, res) => {
 router.post("/login", async (req, res) => {
   try {
     const user = await User.loginUser(req.body.email, req.body.password);
-    console.log(user + " xxxxx ");
     const token = await user.generateAuthTokens();
     res.cookie("token", token, { httpOnly: true });
     res.redirect("/");

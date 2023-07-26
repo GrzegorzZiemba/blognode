@@ -22,9 +22,6 @@ router.post("/create-post", async (req, res) => {
     const date = new Date();
     const post = req.body;
     const addPost = new Post({
-      // title: post.title,
-      // description: post.description,
-      // author: post.author,
       ...post,
       date,
     });
@@ -37,7 +34,6 @@ router.post("/create-post", async (req, res) => {
 
 router.get("/", async (req, res) => {
   try {
-    let current = "";
     const posts = await Post.find();
     res.render("showPosts", {
       posts,
@@ -49,7 +45,7 @@ router.get("/", async (req, res) => {
 
 router.post("/post-delete", async (req, res) => {
   try {
-    const result = await Post.findByIdAndDelete(req.body.postId);
+    await Post.findByIdAndDelete(req.body.postId);
     res.redirect("/");
   } catch (e) {
     throw new Error(e);
