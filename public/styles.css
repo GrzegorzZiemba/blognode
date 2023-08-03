@@ -4,8 +4,8 @@ body {
   min-height: 100vh;
   font-family: "Roboto", sans-serif;
   font-size: 22px;
-  background-color: #202020;
-  color: #f7f7f7;
+  background-color: #379683;
+  color: #edf5e1;
   margin: 0;
   padding: 0;
 }
@@ -14,9 +14,11 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #f1c84a;
+  background-color: #5cdb95;
+
   padding: 10px 50px;
   font-weight: bold;
+  border-radius: 6px;
 }
 
 .nav-list {
@@ -46,9 +48,10 @@ body {
 
 .header,
 .footer {
-  background-color: #f1c84a;
+  background-color: #5cdb95;
   padding: 20px 0;
   color: #202020;
+  border-radius: 6px;
 }
 
 .title {
@@ -138,7 +141,7 @@ body {
 }
 
 .footer {
-  background-color: #f1c84a;
+  background-color: #5cdb95;
   padding: 20px 0;
   color: #202020;
   text-align: center;

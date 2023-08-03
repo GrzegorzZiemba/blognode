@@ -13,10 +13,15 @@
                 <div class="card">
                     <div class="card-body">
                     <h5 class="card-title"><%= post.title %></h5>
-                    <p class="card-text">
-                        <%= post.description %>
+                    <div style=" overflow: hidden;
+                            white-space: nowrap;
+                        max-height: 80px;
+                        text-overflow: clip;">
+                         <p class="card-text">
+                       
                         <%- post.description %>
                     </p>
+                </div>
                     <p class="card-text">
                         <%= post._id %>
                     </p>
@@ -49,6 +54,14 @@
       </div>
     </section>
     <%- include('./includes/footer.ejs') %>
-
-  </body>
+    <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
+    <!-- Długi baner na stronie głównej -->
+    <ins class="adsbygoogle"
+    style="display:inline-block;width:728px;height:90px"
+    data-ad-client="ca-pub-1234567890123456"
+    data-ad-slot="1234567890"></ins>
+    <script>
+    (adsbygoogle = window.adsbygoogle || []).push({});
+    </script>
+ 
 </html>
