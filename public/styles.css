@@ -4,8 +4,8 @@ body {
   min-height: 100vh;
   font-family: "Roboto", sans-serif;
   font-size: 22px;
-  background-color: #379683;
-  color: #edf5e1;
+  background-color: #a9a9a9; /* Lighter Gray */
+  color: #000000; /* Black */
   margin: 0;
   padding: 0;
 }
@@ -14,7 +14,7 @@ body {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: #5cdb95;
+  background-color: #808080; /* Primary Gray */
 
   padding: 10px 50px;
   font-weight: bold;
@@ -33,24 +33,24 @@ body {
 }
 
 .nav-link {
-  color: #202020;
+  color: #ffffff; /* White */
   text-decoration: none;
-  border: 1px solid #202020;
+  border: 1px solid #ffffff; /* White */
   border-radius: 50px;
   padding: 10px 20px;
   transition: background-color 0.3s ease;
 }
 
 .nav-link:hover {
-  background-color: #202020;
-  color: #fff;
+  background-color: #606060; /* Darker Gray */
+  color: #ffffff; /* White */
 }
 
 .header,
 .footer {
-  background-color: #5cdb95;
+  background-color: #808080; /* Primary Gray */
   padding: 20px 0;
-  color: #202020;
+  color: #ffffff; /* White */
   border-radius: 6px;
 }
 
@@ -65,52 +65,36 @@ body {
   width: 90%;
 }
 
-.card {
-  background-color: #282828;
-  color: #fff;
+.card,
+.post,
+.aside-content {
+  background-color: #606060; /* Darker Gray */
+  color: #ffffff; /* White */
   margin-bottom: 20px;
   border-radius: 20px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
 }
-.container-fluid {
-  padding: 0;
-}
+
 .card:hover {
   box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.3);
   transform: scale(1.02);
-}
-
-.post {
-  background-color: #282828;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 }
 
 .post-title {
   margin: 0 0 10px;
 }
 
-.aside-content {
-  background-color: #282828;
-  border-radius: 20px;
-  padding: 20px;
-  margin-bottom: 20px;
-  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-}
-
 .btn-primary {
-  background-color: #f1c84a;
+  background-color: #808080; /* Primary Gray */
   border: none;
-  color: #202020;
+  color: #ffffff; /* White */
   transition: background-color 0.3s ease;
 }
 
 .btn-primary:hover {
-  background-color: #202020;
-  color: #fff;
+  background-color: #606060; /* Darker Gray */
+  color: #ffffff; /* White */
 }
 
 .copyright {
@@ -141,9 +125,9 @@ body {
 }
 
 .footer {
-  background-color: #5cdb95;
+  background-color: #808080; /* Primary Gray */
   padding: 20px 0;
-  color: #202020;
+  color: #ffffff; /* White */
   text-align: center;
 }
 
@@ -155,7 +139,7 @@ body {
 }
 
 .login-form label {
-  color: #f5f5f5;
+  color: #ffffff; /* White */
   margin: 5px 0;
 }
 
@@ -170,15 +154,15 @@ body {
   padding: 10px;
   border-radius: 5px;
   border: none;
-  color: #202020;
-  background-color: #fbbe5b;
+  color: #ffffff; /* White */
+  background-color: #808080; /* Primary Gray */
   cursor: pointer;
 }
 
 .codeblock {
   display: block;
   background-color: #1e1e1e; /* dark gray, similar to VS Code */
-  color: #82ecff; /* light gray, similar to VS Code */
+  color: #a9a9a9; /* Lighter Gray */
   padding: 20px;
   border-radius: 5px;
   font-family: "Courier New", monospace;
