@@ -24,10 +24,7 @@
                     </p>
                 </div>
                   
-                    <!-- <p class="card-text">
-                        <%= isAuth %>
-                    </p> -->
-                    <!-- <p><%= post.author %></p> -->
+                   
                     <% if (post.author == isAuth) { %>
                         <p>Action</p>
                         <form action="/post-delete" method="POST" class="login-form">
@@ -37,7 +34,7 @@
                         </form> 
                  
                     <% } else { %>
-                        <!-- <h1>No Posts</h1> -->
+                   
                     <% } %>  
 
                   
