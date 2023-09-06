@@ -9,8 +9,9 @@
         <div class="col-lg-10">
             <% if (posts.length > 0) { %>
                 <% posts.forEach(post => { %>
-    
+                 
                 <div class="card">
+                    <a href="/post/<%= post._id %>" class="btn btn-primary">
                     <div class="card-body">
                     <h5 class="card-title"><%= post.title %></h5>
                     <div style=" overflow: hidden;
@@ -22,13 +23,11 @@
                         <%- post.description %>
                     </p>
                 </div>
-                    <p class="card-text">
-                        <%= post._id %>
-                    </p>
-                    <p class="card-text">
+                  
+                    <!-- <p class="card-text">
                         <%= isAuth %>
-                    </p>
-                    <p><%= post.author %></p>
+                    </p> -->
+                    <!-- <p><%= post.author %></p> -->
                     <% if (post.author == isAuth) { %>
                         <p>Action</p>
                         <form action="/post-delete" method="POST" class="login-form">
@@ -38,21 +37,28 @@
                         </form> 
                  
                     <% } else { %>
-                        <h1>No Posts</h1>
+                        <!-- <h1>No Posts</h1> -->
                     <% } %>  
 
-                    <a href="/post/<%= post._id %>" class="btn btn-primary"><%= post.date %>}</a>
+                  
 
                     </div>
+                </a>
                 </div>
+          
                 <% }) %>
 
             <% } else { %>
                 <h1>No Posts</h1>
             <% } %>
+      </div>   
+      <div class="col-lg-2">
+        <h1>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quis eos debitis dolor. Tempore, officiis libero maxime possimus ut itaque nostrum aliquid officia exercitationem quibusdam voluptates quae illum numquam reprehenderit quam.</h1>
+        </div>
       </div>
-      </div>
+   
     </section>
+   
     <%- include('./includes/footer.ejs') %>
     <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-1234567890123456" crossorigin="anonymous"></script>
     <!-- Długi baner na stronie głównej -->
